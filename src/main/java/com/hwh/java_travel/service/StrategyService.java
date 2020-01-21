@@ -15,5 +15,5 @@ public interface StrategyService {
 
     public Strategy findById(Integer id);
 
-    public void addStrategy(Integer userid,String nickname,String title,String content,String avatarurl,String imgurl);
+    public Integer addStrategy(String openid,Strategy strategy);
 }

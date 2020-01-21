@@ -9,6 +9,10 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Description TODO
  * @Author hwh
@@ -46,5 +50,27 @@ public class UserServiceImpl implements UserService {
             user.setGender("男");
         }
         userMapper.addUser(user);
+    }
+
+    /**
+     * 跟新浏览记录
+     * @param record
+     * @param openid
+     * @return
+     */
+    @Override
+    public Integer updateRecord(String record,String openid) {
+        User user = userMapper.findByOpenid(openid);
+        String sRecord = user.getBrowserecord();
+        if(!"".equals(sRecord)&&sRecord!=null){
+            List<String> records = Arrays.asList(sRecord.split("&"));
+            if(!records.contains(record)){
+                sRecord+='&'+record;
+            }
+        }else {
+            sRecord=record;
+        }
+
+        return userMapper.updateRecord(sRecord,openid);
     }
 }

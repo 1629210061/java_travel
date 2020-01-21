@@ -25,7 +25,7 @@ public class AttractionController {
     private AttractionService attractionService;
 
     /**
-     * 推荐景点
+     * 热门景点
      * @return
      */
     @ResponseBody
@@ -112,6 +112,15 @@ public class AttractionController {
     public Attraction findById(Integer id){
         return attractionService.findById();
     }
+
+
+    /**
+     * 景点推荐
+     */
+//    public List<Attraction> pushRecommend(String openid){
+//
+//    }
+
 
 
 }

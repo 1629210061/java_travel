@@ -17,6 +17,7 @@ public class Attraction {
 	private String cn_name;
 	private String open_time;
 	private String ticket;
+	private Float ticket_price;
 	private String lb_pictures;
 	private String dt_pictures;
 	private String introduce;

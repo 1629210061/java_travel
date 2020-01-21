@@ -68,4 +68,11 @@ public interface AttractionService {
      */
     public Attraction findById();
 
+    /**
+     * 推荐景点
+     * @param openid
+     * @return
+     */
+//    public List<Attraction> pushRecommend(String openid);
+
 }

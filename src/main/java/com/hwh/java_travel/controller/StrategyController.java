@@ -33,10 +33,10 @@ public class StrategyController {
         return strategyService.findById(id);
     }
 
+    @ResponseBody
     @RequestMapping("/addStrategy")
-    public void addStrategy(String nickname, String title, String content, String avatarurl, String imgurl){
-        System.out.println("ccc");
-//        strategyService.addStrategy(userid,nickname,title,content,avatarurl,imgurl);
+    public Integer addStrategy(String openid,Strategy strategy){
+       return strategyService.addStrategy(openid,strategy);
     }
 
 }

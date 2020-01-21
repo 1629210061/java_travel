@@ -1,10 +1,12 @@
 package com.hwh.java_travel.controller;
 
+import com.hwh.java_travel.entity.GuideBook;
 import com.hwh.java_travel.entity.Order;
 import com.hwh.java_travel.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -31,8 +33,8 @@ public class OrderController {
 
     @ResponseBody
     @RequestMapping("/addOrder")
-    public Integer addOrder(Order order){
-        return orderService.addOrder(order);
+    public Integer addOrder(String openid,Order order){
+        return orderService.addOrder(openid,order);
     }
 
     @ResponseBody
@@ -40,4 +42,11 @@ public class OrderController {
     public Order findById(Integer id){
         return orderService.findById(id);
     }
+
+    @ResponseBody
+    @RequestMapping("/addGuideBook")
+    public Integer addGuideBook(GuideBook guideBook){
+        return orderService.addGuideBook(guideBook);
+    }
+
 }

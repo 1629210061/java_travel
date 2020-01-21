@@ -22,5 +22,5 @@ public interface StrategyMapper {
     public Strategy findById(Integer id);
 
     @Insert("insert into strategy(userid,nickname,title,content,avatarurl,imgurl) values(#{userid},#{nickname},#{title},#{content},#{avatarurl},#{imgurl})")
-    public void addStrategy(Integer userid,String nickname,String title,String content,String avatarurl,String imgurl);
+    public Integer addStrategy(Strategy strategy);
 }

@@ -1,5 +1,6 @@
 package com.hwh.java_travel.service;
 
+import com.hwh.java_travel.entity.GuideBook;
 import com.hwh.java_travel.entity.Order;
 
 import java.util.List;
@@ -13,7 +14,9 @@ public interface OrderService {
 
     public List<Order> findAllOrder(Integer userId);
 
-    public Integer addOrder(Order order);
+    public Integer addOrder(String openid,Order order);
 
     public Order findById(Integer id);
+
+    public Integer addGuideBook(GuideBook guideBook);
 }

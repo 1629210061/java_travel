@@ -14,6 +14,7 @@ public class GuideBook {
     private String time;
     private String name;
     private String starttime;
+    private String endtime;
     private String ordername;
     private String tel;
     private String message;

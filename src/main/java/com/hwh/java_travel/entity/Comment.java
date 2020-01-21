@@ -12,6 +12,7 @@ public class Comment {
 
     private Integer id;
     private String nickname;
+    private String avatraurl;
     private String content;
     private String images;
     private String comm_name;

@@ -1,11 +1,14 @@
 package com.hwh.java_travel.service.impl;
 
 import com.hwh.java_travel.entity.Attraction;
+import com.hwh.java_travel.entity.User;
 import com.hwh.java_travel.mapper.AttractionMapper;
+import com.hwh.java_travel.mapper.UserMapper;
 import com.hwh.java_travel.service.AttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +21,9 @@ public class AttractionServiceImpl implements AttractionService {
 
     @Autowired
     private AttractionMapper attractionMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
 
     @Override
@@ -69,6 +75,15 @@ public class AttractionServiceImpl implements AttractionService {
     public Attraction findById() {
         return attractionMapper.findById();
     }
+
+//    @Override
+//    public List<Attraction> pushRecommend(String openid) {
+//        User user = userMapper.findByOpenid(openid);
+//        List<String> records = Arrays.asList(user.getBrowserecord().split("&"));
+//        List<Attraction> attractions = attractionMapper.findAll();
+//
+//        return null;
+//    }
 
 
 }

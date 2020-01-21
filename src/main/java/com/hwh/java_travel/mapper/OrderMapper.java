@@ -1,5 +1,6 @@
 package com.hwh.java_travel.mapper;
 
+import com.hwh.java_travel.entity.GuideBook;
 import com.hwh.java_travel.entity.Order;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import org.apache.ibatis.annotations.Insert;
@@ -24,6 +25,9 @@ public interface OrderMapper {
 
     @Insert("insert into orders(time,name,price,limited,amount,userid,ticketcode,ordertype,picurl) values(#{time},#{name},#{price},#{limited},#{amount},#{userid},#{ticketcode},#{ordertype},#{picurl})")
     public Integer addOrder(Order order);
+
+    @Insert("insert into book(time,name,starttime,endtime,ordername,tel,message) values(#{time},#{name},#{starttime},#{endtime},#{ordername},#{tel},#{message})")
+    public Integer addGuideBook(GuideBook guideBook);
 
 
 }

@@ -15,8 +15,6 @@ public class Strategy {
     private String nickname;
     private String title;
     private String content;
-    private Integer agree;
-    private Integer comment;
     private String avatarurl;
     private String imgurl;
 

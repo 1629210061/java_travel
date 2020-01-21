@@ -15,4 +15,12 @@ public interface UserService {
     public String getOpenid(String code);
 
     public void addUser(User user);
+
+    /**
+     * 更新浏览记录
+     * @param record
+     * @param openid
+     * @return
+     */
+    public Integer updateRecord(String record,String openid);
 }
