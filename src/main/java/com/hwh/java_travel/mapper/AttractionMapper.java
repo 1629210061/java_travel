@@ -22,7 +22,7 @@ public interface AttractionMapper {
      * 推荐景区获取
      * @return
      */
-    @Select("select * from attractions where level='AAAAA'||level='AAAA'")
+    @Select("select * from attractions where level='AAAAA'||level='AAAA' limit 10")
     public List<Attraction> findRandom();
 
     /**
