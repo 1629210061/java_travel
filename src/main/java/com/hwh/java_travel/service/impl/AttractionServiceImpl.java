@@ -29,10 +29,10 @@ public class AttractionServiceImpl implements AttractionService {
     @Override
     public List<Attraction> findRandom() {
         List<Attraction> attractions =  attractionMapper.findRandom();
-        for(Attraction attraction:attractions){
-            String[] pics = attraction.getLb_pictures().split("&");
-            attraction.setPicurl(pics[0]);
-        }
+//        for(Attraction attraction:attractions){
+//            String[] pics = attraction.getLb_pictures().split("&");
+//            attraction.setPicurl(pics[0]);
+//        }
 
         return attractions;
     }

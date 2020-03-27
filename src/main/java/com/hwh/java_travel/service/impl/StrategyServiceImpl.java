@@ -8,7 +8,7 @@ import com.hwh.java_travel.service.StrategyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @Description TODO
@@ -26,7 +26,16 @@ public class StrategyServiceImpl implements StrategyService {
 
     @Override
     public List<Strategy> findAll() {
-        return strategyMapper.findAll();
+        List<Strategy> strategies = strategyMapper.findAll();
+        for(Strategy strategy:strategies){
+            if(strategy.getImgurl()!=null&&!"".equals(strategy.getImgurl())){
+                String[] imgurl = strategy.getImgurl().split(",");
+                List<String> imgList = Arrays.asList(imgurl);
+                strategy.setImgList(imgList);
+            }
+
+        }
+        return strategies;
     }
 
     @Override
@@ -38,6 +47,7 @@ public class StrategyServiceImpl implements StrategyService {
     public Integer addStrategy(String openid,Strategy strategy) {
         Integer userid = userMapper.findByOpenid(openid).getId();
         strategy.setUserid(userid);
+        strategy.setImgurl(strategy.getImgurl());
         return strategyMapper.addStrategy(strategy);
     }
 

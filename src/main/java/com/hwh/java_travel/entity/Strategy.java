@@ -2,6 +2,8 @@ package com.hwh.java_travel.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @Description TODO
  * @Author hwh
@@ -17,5 +19,6 @@ public class Strategy {
     private String content;
     private String avatarurl;
     private String imgurl;
+    private List<String> imgList;
 
 }

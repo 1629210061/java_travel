@@ -13,5 +13,6 @@ public class Collect {
     private Integer id;
     private Integer userid;
     private String name;
+    private String picurl;
 
 }

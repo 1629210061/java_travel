@@ -18,6 +18,7 @@ public class Car {
 	private String name;
 	private String tel;
 	private String company;
+	private String fm_images;
 
 	
 }

@@ -23,7 +23,7 @@ public interface CollectMapper {
     @Select("select * from collects where id=#{id}")
     public Collect findById(Integer id);
 
-    @Insert("insert into collects(userid,name) values(#{userid},#{name})")
+    @Insert("insert into collects(userid,name,picurl) values(#{userid},#{name},#{picurl})")
     public Integer addCollect(Collect collect);
 
     @Delete("delete from collects where id=#{id}")

@@ -36,6 +36,8 @@ public class StrategyController {
     @ResponseBody
     @RequestMapping("/addStrategy")
     public Integer addStrategy(String openid,Strategy strategy){
+        System.out.println(openid);
+        System.out.println(strategy);
        return strategyService.addStrategy(openid,strategy);
     }
 

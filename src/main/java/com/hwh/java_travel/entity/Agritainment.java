@@ -24,4 +24,5 @@ public class Agritainment {
     private String longitude;
     private String latitude;
     private String fm_images;
+    private String pic_url;
 }
