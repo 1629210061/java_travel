@@ -1,14 +1,18 @@
 package com.hwh.java_travel.service.impl;
 
 import com.hwh.java_travel.entity.Attraction;
+import com.hwh.java_travel.entity.Collect;
 import com.hwh.java_travel.entity.User;
 import com.hwh.java_travel.mapper.AttractionMapper;
+import com.hwh.java_travel.mapper.CollectMapper;
 import com.hwh.java_travel.mapper.UserMapper;
 import com.hwh.java_travel.service.AttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -25,15 +29,13 @@ public class AttractionServiceImpl implements AttractionService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private CollectMapper collectMapper;
+
 
     @Override
     public List<Attraction> findRandom() {
         List<Attraction> attractions =  attractionMapper.findRandom();
-//        for(Attraction attraction:attractions){
-//            String[] pics = attraction.getLb_pictures().split("&");
-//            attraction.setPicurl(pics[0]);
-//        }
-
         return attractions;
     }
 
@@ -61,7 +63,6 @@ public class AttractionServiceImpl implements AttractionService {
     @Override
     public List<Attraction> findByCategoryAndName(String category, String name) {
         name = "%"+name+"%";
-        System.out.println(name);
         return attractionMapper.findByCategoryAndName(category,name);
     }
 
@@ -76,14 +77,34 @@ public class AttractionServiceImpl implements AttractionService {
         return attractionMapper.findById();
     }
 
-//    @Override
-//    public List<Attraction> pushRecommend(String openid) {
-//        User user = userMapper.findByOpenid(openid);
-//        List<String> records = Arrays.asList(user.getBrowserecord().split("&"));
-//        List<Attraction> attractions = attractionMapper.findAll();
-//
-//        return null;
-//    }
+    @Override
+    public List<Attraction> recommendAttraction(String openid) {
+        User user = userMapper.findByOpenid(openid);
+        Integer userId = user.getId();
+        List<Collect> collectList = collectMapper.findByUserId(userId);
+        List<Attraction> attractionList = attractionMapper.findAll();
+        for(Collect collect:collectList){
+            Attraction collectAttraction = attractionMapper.findByName(collect.getName());
+            Integer score = 0;
+            for(Attraction attraction:attractionList){
+                if(collectAttraction.getArea().equals(attraction.getArea())){
+                    score+=1;
+                }
+                if(collectAttraction.getCategory().equals(attraction.getCategory())){
+                    score+=1;
+                }
+                attraction.setScore(score);
+            }
+        }
+        Collections.sort(attractionList, new Comparator<Attraction>() {
+            @Override
+            public int compare(Attraction o1, Attraction o2) {
+                return o2.getScore().compareTo(o1.getScore());
+            }
+        });
+        List<Attraction> recommendAttraction = attractionList.subList(0,10);
+        return recommendAttraction;
+    }
 
 
 }

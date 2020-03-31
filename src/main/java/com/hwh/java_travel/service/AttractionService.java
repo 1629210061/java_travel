@@ -73,6 +73,6 @@ public interface AttractionService {
      * @param openid
      * @return
      */
-//    public List<Attraction> pushRecommend(String openid);
+    public List<Attraction> recommendAttraction(String openid);
 
 }

@@ -4,6 +4,7 @@ import com.hwh.java_travel.entity.Attraction;
 import com.hwh.java_travel.service.AttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -117,9 +118,11 @@ public class AttractionController {
     /**
      * 景点推荐
      */
-//    public List<Attraction> pushRecommend(String openid){
-//
-//    }
+    @ResponseBody
+    @RequestMapping("/recommendAttraction")
+    public List<Attraction> recommendAttraction(String openid){
+        return attractionService.recommendAttraction(openid);
+    }
 
 
 

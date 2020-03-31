@@ -28,6 +28,7 @@ public class Attraction {
 	private String longitude;
 	private String latitude;
 	private String picurl;
+	private Integer score;
 
 	
 }

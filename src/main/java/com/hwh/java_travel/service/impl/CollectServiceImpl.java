@@ -9,6 +9,9 @@ import com.hwh.java_travel.mapper.UserMapper;
 import com.hwh.java_travel.service.CollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -46,6 +49,7 @@ public class CollectServiceImpl implements CollectService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,rollbackFor = Exception.class)
     public Integer addCollect(String openid,String name) {
         Collect collect = new Collect();
         User user = userMapper.findByOpenid(openid);
@@ -53,14 +57,12 @@ public class CollectServiceImpl implements CollectService {
         collect.setUserid(user.getId());
         collect.setName(name);
         collect.setPicurl(attraction.getPicurl());
-        System.out.println(collect);
         try {
             return collectMapper.addCollect(collect);
         }catch (Exception e){
+            System.out.println(e);
             return 0;
         }
-
-
     }
 
     @Override
